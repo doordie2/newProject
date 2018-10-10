@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>群管理</title>
+  <link rel="stylesheet" href="../src/layui/css/layui.css">
+  <script src="../src/layui/layui.js" charset="utf-8"></script>
+</head>
+<body>
+<div class="layui-col-md12">
+  <div class="layui-card">
+    <div class="layui-card-header">
+      <p>群管理</p>
+    </div>
+    <div class="layui-card-body">
+      <p>下方仅展示登录在后台的在线账号，账号下线的情况下不能设置.</p>
+      <div>
+          <label class="layui-form-label">账号</label>
+          <div class="layui-input-block">
+            <select name="interest" lay-filter="aihao">
+              <option value=""></option>
+              <option value="0">写作</option>
+              <option value="1" selected="">阅读</option>
+              <option value="2">游戏</option>
+              <option value="3">音乐</option>
+              <option value="4">旅行</option>
+            </select>
+        </div>
+        <div class="layui-input-block"
+             style="float: left; position: relative;">
+          <input style="width: auto;" type="text" id="select_orderId"
+                 name="select_orderId" lay-verify="required"
+                 placeholder="请输入账号名称" autocomplete="off"
+                 class="layui-input">
+        </div>
+        <button class="layui-btn" lay-submit="" id="searchBtn"
+                data-type="getInfo" style="float: left;">搜索
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
