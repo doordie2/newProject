@@ -90,10 +90,9 @@
 
               <div class="layui-input-block"
                    style="float: left; position: relative;">
-                <label class="layui-form-label">订单搜索</label>
                 <input style="width: auto;" type="text" id="select_orderId"
                        name="select_orderId" lay-verify="required"
-                       placeholder="请输入订单编号" autocomplete="off"
+                       placeholder="搜索微信账号" autocomplete="off"
                        class="layui-input">
               </div>
               <button class="layui-btn" lay-submit="" id="searchBtn"
@@ -112,7 +111,7 @@
               <button class="layui-btn layui-btn-normal " data-method="offset"
                       data-type="auto" id="addEquipment">+添加设备
               </button>
-              <div>
+              <div style="margin: 10px">
                 <button class="layui-btn">修改昵称</button>
                 <button class="layui-btn">修改头像</button>
                 <button class="layui-btn">修改所属分组</button>
@@ -121,6 +120,8 @@
                 <button class="layui-btn">养号配置</button>
                 <button class="layui-btn">修改封面</button>
                 <button class="layui-btn">好友请求设置</button>
+              </div>
+              <div style="margin: 10px">
                 <button class="layui-btn">打招呼内容设置</button>
                 <button class="layui-btn">群聊邀请设置</button>
                 <button class="layui-btn">自动回复内容设置</button>
@@ -250,7 +251,8 @@
         type: 1
         , offset: 1 //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
         , id: 'layerDemo' + 1 //防止重复弹出
-        , content: '<div style="padding: 20px 100px;">' + 'sssss' + '</div>'
+        , content: '<div style="padding: 0px;margin: 0px"><textarea id="txtCon" style="width: 200px;height: 100px;margin: 5px"></textarea></div>'
+        ,title:'修改分组信息'
         , btn: ['确认','取消']
         , btnAlign: 'c' //按钮居中
         , shade: 0 //不显示遮罩
@@ -261,18 +263,51 @@
     });
     //自动回复
     $('#autoResponse').on('click', function () {
-      var othis = $(this), method = othis.data('method');
-      active[method] ? active[method].call(this, othis) : '';
+      layer.open({
+        type: 1
+        , offset: 1 //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+        , id: 'layerDemo' + 1 //防止重复弹出
+        , content: '<div style="padding: 0px;margin: 0px"><textarea id="txtCon" style="width: 200px;height: 100px;margin: 5px"></textarea></div>'
+        ,title:'自动回复模板'
+        , btn: ['确认','取消']
+        , btnAlign: 'c' //按钮居中
+        , shade: 0 //不显示遮罩
+        , yes: function () {
+          layer.closeAll();
+        }
+      });
     });
     //打招呼
     $('#sayHello').on('click', function () {
-      var othis = $(this), method = othis.data('method');
-      active[method] ? active[method].call(this, othis) : '';
+      layer.open({
+        type: 1
+        , offset: 1 //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+        , id: 'layerDemo' + 1 //防止重复弹出
+        , content: '<div style="padding: 0px;margin: 0px"><textarea id="txtCon" style="width: 200px;height: 100px;margin: 5px"></textarea></div>'
+        ,title:'打招呼模板'
+        , btn: ['确认','取消']
+        , btnAlign: 'c' //按钮居中
+        , shade: 0 //不显示遮罩
+        , yes: function () {
+          layer.closeAll();
+        }
+      });
     });
     //添加设备
     $('#addEquipment').on('click', function () {
-      var othis = $(this), method = othis.data('method');
-      active[method] ? active[method].call(this, othis) : '';
+      layer.open({
+        type: 1
+        , offset: 1 //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+        , id: 'layerDemo' + 1 //防止重复弹出
+        , content: '<div style="padding: 0px;margin: 0px"><textarea id="txtCon" style="width: 200px;height: 100px;margin: 5px"></textarea></div>'
+        ,title:'添加设备'
+        , btn: ['确认','取消']
+        , btnAlign: 'c' //按钮居中
+        , shade: 0 //不显示遮罩
+        , yes: function () {
+          layer.closeAll();
+        }
+      });
     });
   });
 
