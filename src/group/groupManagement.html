@@ -16,18 +16,19 @@
     </div>
     <div class="layui-card-body" style="height: 100px">
       <p>下方仅展示登录在后台的在线账号，账号下线的情况下不能设置.</p>
-      <div>
-          <label class="layui-form-label">账号</label>
-          <div class="layui-input-block">
-            <select name="interest" lay-filter="aihao">
-              <option value=""></option>
-              <option value="0">写作</option>
-              <option value="1" selected="">阅读</option>
-              <option value="2">游戏</option>
-              <option value="3">音乐</option>
-              <option value="4">旅行</option>
-            </select>
+      <div class="layui-form-item">
+        <label class="layui-form-label">单行选择框</label>
+        <div class="layui-input-block">
+          <select name="interest" lay-filter="aihao">
+            <option value=""></option>
+            <option value="0">写作</option>
+            <option value="1" selected="">阅读</option>
+            <option value="2">游戏</option>
+            <option value="3">音乐</option>
+            <option value="4">旅行</option>
+          </select>
         </div>
+      </div>
         <div class="layui-input-block"
              style="float: left; position: relative;">
           <input style="width: auto;" type="text" id="select_orderId"
