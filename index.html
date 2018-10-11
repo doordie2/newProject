@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>layout 后台大布局 - Layui</title>
+  <title>易可云</title>
   <link rel="stylesheet" href="./src/layui/css/layui.css">
   <script src="./src/layui/layui.js" charset="utf-8"></script>
   <style>
@@ -58,21 +58,21 @@
           <a href="javascript:;">账号</a>
           <dl class="layui-nav-child">
             <dd class="layui-this">
-            	<a lay-href="./src/tpl/home.html">账号列表</a>
+            	<a lay-href="./src/user/home.html">账号列表</a>
             </dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">好友</a>
           <dl class="layui-nav-child">
-            <dd><a lay-href="./src/tpl/add-fans.html">加粉任务</a></dd>
-            <dd><a lay-href="">清粉任务</a></dd>
+            <dd><a lay-href="./src/userFans/addFans.html">加粉任务</a></dd>
+            <dd><a lay-href="./src/userFans/cleanFans.html">清粉任务</a></dd>
           </dl>
         </li>
         <li class="layui-nav-item">
           <a href="javascript:;">群</a>
           <dl class="layui-nav-child">
-            <dd><a lay-href="">群管理</a></dd>
+            <dd><a lay-href="./src/group/groupManagement.html">群管理</a></dd>
             <dd><a lay-href="">群主配置</a></dd>
             <dd><a lay-href="">扫码进群</a></dd>
           </dl>
@@ -100,7 +100,7 @@
   </div>
 
   <div class="layui-body">
-  	 <iframe src="./src/tpl/home.html" frameborder="0" class="layadmin-iframe"></iframe>
+  	 <iframe src="src/user/home.html" frameborder="0" class="layadmin-iframe"></iframe>
 
     <div class="layui-footer">
       <!-- 底部固定区域 -->
