@@ -19,12 +19,137 @@
             <legend>加粉任务</legend>
           </fieldset>
         </div>
-        <div class="layui-card-body" style="height: 70px">
+        <div class="layui-card-body">
           <button class="layui-btn layui-btn-primary">添加加粉账号</button>
+          <fieldset class="layui-elem-field layui-field-title"
+                    style="margin-top: 20px;">
+            <legend>批量添加微信号</legend>
+          </fieldset>
+          <div>
+            <span>点击上传txt文件</span>
+            <button type="button" class="layui-btn" id="uploadFile"><i class="layui-icon"></i>上传文件</button>
+            <p>*格式：一行一个微信号、以回车隔开，每行字符数不能超过50。</p>
+            <div class="layui-form-item layui-form-text">
+              <label class="layui-form-label">请输入内容</label>
+              <div class="layui-input-block">
+                <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+              </div>
+            </div>
+            <fieldset class="layui-elem-field layui-field-title"
+                      style="margin-top: 20px;">
+              <legend>设置来源</legend>
+            </fieldset>
+            <div>
+              <input type="radio" name="source" value="weChat" title="通过微信号搜索添加好友" checked>通过微信号搜索添加好友
+              <input type="radio" name="source" value="phone" title="通过搜索手机号添加好友">通过搜索手机号添加好友
+            </div>
+            <fieldset class="layui-elem-field layui-field-title"
+                      style="margin-top: 20px;">
+              <legend>设置验证申请</legend>
+            </fieldset>
+            <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入申请验证，最多40个字" class="layui-input" style="width: 250px">
+            <fieldset class="layui-elem-field layui-field-title"
+                      style="margin-top: 20px;">
+              <legend>加粉任务设置</legend>
+            </fieldset>
+
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label" style="width: 150px">任务执行时间:</label>
+                <div class="layui-input-inline" style="width: 100px;">
+                  <input type="text" name="date" id="dateStart" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline" style="width: 100px;">
+                  <input type="text" name="date" id="dateEnd" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                </div>
+              </div>
+              <p>
+                （每日加粉任务在指定时间内执行）
+              </p>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label" style="width: 150px">提交申请间隔时长:</label>
+                <div class="layui-input-inline" style="width: 100px;">
+                  <input type="text" name="price_min" placeholder="秒" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline" style="width: 100px;">
+                  <input type="text" name="price_min" placeholder="秒" autocomplete="off" class="layui-input">
+                </div>
+              </div>
+              <p>
+                （多个账号进行加粉任务时，为单个账号提交申请间隔时长）
+              </p>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label" style="width: 150px">单日提交申请最大限制:</label>
+                <div class="layui-input-inline" style="width: 100px;">
+              <input type="text" name="price_min" placeholder="个" autocomplete="off" class="layui-input">
+            </div>
+            </div>
+              <p>
+                （每个账号每天最多可提交的好友申请数，当添加粉丝超过最大值，顺延到次日）
+              </p>
+            </div>
+
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label" style="width: 150px"> 请求模式:</label>
+                <div class="layui-input-inline" style="width: 300px;">
+                  <input type="radio" name="source" value="weChat" title="通过微信号搜索添加好友" checked>队列模式
+                  <input type="radio" name="source" value="phone" title="通过搜索手机号添加好友">全部模式
+                </div>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label" style="width: 150px"> 添加成功后打标签:</label>
+                <div class="layui-input-inline" style="width: 300px;">
+
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+<script>
+  layui.use('upload', function(){
+    var $ = layui.jquery
+      ,upload = layui.upload;
+
+    //普通图片上传
+    var uploadInst =//指定允许上传的文件类型
+      upload.render({
+        elem: '#uploadFile'
+        ,url: '/upload/'
+        ,accept: 'file' //普通文件
+        ,done: function(res){
+          console.log(res)
+        }
+      });
+  });
+  layui.use(['form', 'layedit', 'laydate'], function(){
+    var form = layui.form
+      ,layer = layui.layer
+      ,layedit = layui.layedit
+      ,laydate = layui.laydate;
+
+    //日期
+    laydate.render({
+      elem: '#dateStart'
+    });
+    laydate.render({
+      elem: '#dateEnd'
+    });
+  });
+</script>
 </body>
 </html>
