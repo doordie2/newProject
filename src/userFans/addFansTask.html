@@ -57,11 +57,11 @@
               <div class="layui-inline">
                 <label class="layui-form-label" style="width: 150px">任务执行时间:</label>
                 <div class="layui-input-inline" style="width: 100px;">
-                  <input type="text" name="date" id="dateStart" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                  <input type="text" name="date" id="dateStart" lay-verify="date" placeholder="HH:mm:ss" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid">-</div>
                 <div class="layui-input-inline" style="width: 100px;">
-                  <input type="text" name="date" id="dateEnd" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                  <input type="text" name="date" id="dateEnd" lay-verify="date" placeholder="HH:mm:ss" autocomplete="off" class="layui-input">
                 </div>
               </div>
               <p>
@@ -144,10 +144,12 @@
 
     //日期
     laydate.render({
-      elem: '#dateStart'
+      elem: '#dateStart',
+      type:'time'
     });
     laydate.render({
-      elem: '#dateEnd'
+      elem: '#dateEnd',
+      type:'time'
     });
   });
 </script>
