@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>朋友圈管理</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <script src="../layui/layui.js" charset="utf-8"></script>
+</head>
+<body>
+<div style="padding: 20px; background-color: #F2F2F2;">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          <fieldset class="layui-elem-field layui-field-title"
+                    style="margin-top: 20px;">
+            <legend>朋友圈管理</legend>
+          </fieldset>
+        </div>
+        <div class="layui-card-body" style="height: 70px">
+          <p>消息前的数字表示发送顺序</p>
+          <div class="layui-input-block"
+               style="float: left; position: relative;margin: 0px">
+            <input style="width: auto;" type="text" id="select_orderId"
+                   name="select_orderId" lay-verify="required"
+                   placeholder="查看对象" autocomplete="off"
+                   class="layui-input">
+          </div>
+          <button class="layui-btn" lay-submit="" id="searchBtn"
+                  data-type="getInfo" style="float: left;margin: 0px">搜索
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          <fieldset class="layui-elem-field layui-field-title"
+                    style="margin-top: 20px;">
+            <legend>朋友圈记录</legend>
+          </fieldset>
+        </div>
+        <div class="layui-card-body" style="height: 70px">
+          <p>这里是朋友圈记录</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
