@@ -45,9 +45,6 @@
               <textarea id="demo" style="display: none"></textarea>
               <button class="layui-btn" style="margin-top: 10px" id="nowSend">立即群发</button>
               <button class="layui-btn" style="margin-top: 10px" id="timeSend">定时群发</button>
-              <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="datetime" placeholder="yyyy-MM-dd HH:mm:ss">
-               </div>
             </div>
           </div>
         </div>
@@ -96,7 +93,6 @@
 
       //定时群发
       $('#timeSend').on('click', function () {
-        alert(123)
         layer.open({
           type: 1
           ,
@@ -118,18 +114,19 @@
             layer.closeAll();
           }
         });
+
+        layui.use('laydate', function() {
+          var laydate = layui.laydate;
+          //日期时间选择器
+          laydate.render({
+            elem: '#datetime'
+            ,type: 'datetime'
+          });
+        });
       });
 
   });
 
-  layui.use('laydate', function() {
-    var laydate = layui.laydate;
-    //日期时间选择器
-    laydate.render({
-      elem: '#datetime'
-      ,type: 'datetime'
-    });
-  });
 </script>
 </body>
 </html>

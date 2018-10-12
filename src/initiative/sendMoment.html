@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>发送朋友圈</title>
+  <link rel="stylesheet" href="../layui/css/layui.css">
+  <script src="../layui/layui.js" charset="utf-8"></script>
+</head>
+<body>
+<div style="padding: 20px; background-color: #F2F2F2;">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md12">
+      <div class="layui-card">
+        <div class="layui-card-header">
+          <fieldset class="layui-elem-field layui-field-title"
+                    style="margin-top: 20px;">
+            <legend>发送朋友圈</legend>
+          </fieldset>
+        </div>
+        <div class="layui-card-body">
+          <div style="background-color: cyan;margin-bottom: 10px">
+            <span>发送内容</span>
+          </div>
+          <button class="layui-btn" id="chooseFriend">选择好友</button>
+          <div>
+            <textarea id="demo" style="display: none"></textarea>
+          </div>
+          <div style="background-color: cyan;margin-bottom: 10px">
+            <span>评论提醒设置</span>
+          </div>
+          <div>
+            <input type="radio" name="source" value="weChat" title="展示评论" checked>展示评论
+            <input type="radio" name="source" value="phone" title="隐藏评论">隐藏评论
+          </div>
+          <div>
+            <button class="layui-btn" style="margin-top: 10px" id="nowSend">立即群发</button>
+            <button class="layui-btn" style="margin-top: 10px" id="timeSend">定时群发</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  layui.use('layer', function () { //独立版的layer无需执行这一句
+    var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+    //立即群发
+    $('#chooseFriend').on('click', function () {
+      layer.open({
+        type: 1
+        ,
+        skin: 'layui-layer-rim' //加上边框
+        ,
+        content: '<div style="padding: 0px;margin: 0px"><span>消息开始群发后无法撤销，是否确认群发？</span></div>'
+        ,
+        title: '选择好友'
+        ,
+        btn: ['确认', '取消']
+        ,
+        btnAlign: 'c' //按钮居中
+        ,
+        shade: 0 //不显示遮罩
+        ,
+        yes: function () {
+          layer.closeAll();
+        }
+      });
+    });
+  });
+
+  layui.use('layedit', function(){
+    var layedit = layui.layedit;
+    layedit.build('demo'); //建立编辑器
+  });
+
+  layui.use('layer', function () { //独立版的layer无需执行这一句
+    var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+    //立即群发
+    $('#nowSend').on('click', function () {
+      layer.open({
+        type: 1
+        ,
+        skin: 'layui-layer-rim' //加上边框
+        ,
+        content: '<div style="padding: 0px;margin: 0px"><span>消息开始群发后无法撤销，是否确认群发？</span></div>'
+        ,
+        title: '立即群发'
+        ,
+        btn: ['确认', '取消']
+        ,
+        btnAlign: 'c' //按钮居中
+        ,
+        shade: 0 //不显示遮罩
+        ,
+        yes: function () {
+          layer.closeAll();
+        }
+      });
+    });
+
+    //定时群发
+    $('#timeSend').on('click', function () {
+      layer.open({
+        type: 1
+        ,
+        skin: 'layui-layer-rim' //加上边框
+        ,
+        content: '<div style="padding: 0px;margin: 0px"><div class="layui-input-inline">\n' +
+          '        <input type="text" class="layui-input" id="datetime" placeholder="yyyy-MM-dd HH:mm:ss">\n' +
+          '      </div></div>'
+        ,
+        title: '立即群发'
+        ,
+        btn: ['确认', '取消']
+        ,
+        btnAlign: 'c' //按钮居中
+        ,
+        shade: 0 //不显示遮罩
+        ,
+        yes: function () {
+          layer.closeAll();
+        }
+      });
+
+      layui.use('laydate', function() {
+        var laydate = layui.laydate;
+        //日期时间选择器
+        laydate.render({
+          elem: '#datetime'
+          ,type: 'datetime'
+        });
+      });
+    });
+
+  });
+</script>
+</body>
+</html>
