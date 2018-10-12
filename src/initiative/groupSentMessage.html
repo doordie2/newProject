@@ -37,7 +37,18 @@
           </div>
           </form>
           <div>
-            <a onclick="window.location='./sendMessageLog.html'">群发记录</a>
+            <a onclick="window.location='./sendMessageLog.html'" style="color: cyan">群发记录</a>
+          </div>
+          <div>
+            <p>群发内容</p>
+            <div>
+              <textarea id="demo" style="display: none"></textarea>
+              <button class="layui-btn" style="margin-top: 10px" id="nowSend">立即群发</button>
+              <button class="layui-btn" style="margin-top: 10px" id="timeSend">定时群发</button>
+              <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="datetime" placeholder="yyyy-MM-dd HH:mm:ss">
+               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -53,6 +64,71 @@
     //但是，如果你的HTML是动态生成的，自动渲染就会失效
     //因此你需要在相应的地方，执行下述方法来手动渲染，跟这类似的还有 element.init();
     form.render();
+  });
+  layui.use('layedit', function(){
+    var layedit = layui.layedit;
+    layedit.build('demo'); //建立编辑器
+  });
+  layui.use('layer', function () { //独立版的layer无需执行这一句
+    var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+    //立即群发
+    $('#nowSend').on('click', function () {
+      layer.open({
+        type: 1
+        ,
+          skin: 'layui-layer-rim' //加上边框
+        ,
+        content: '<div style="padding: 0px;margin: 0px"><span>消息开始群发后无法撤销，是否确认群发？</span></div>'
+        ,
+        title: '立即群发'
+        ,
+        btn: ['确认', '取消']
+        ,
+        btnAlign: 'c' //按钮居中
+        ,
+        shade: 0 //不显示遮罩
+        ,
+        yes: function () {
+          layer.closeAll();
+        }
+      });
+    });
+
+      //定时群发
+      $('#timeSend').on('click', function () {
+        alert(123)
+        layer.open({
+          type: 1
+          ,
+            skin: 'layui-layer-rim' //加上边框
+          ,
+          content: '<div style="padding: 0px;margin: 0px"><div class="layui-input-inline">\n' +
+            '        <input type="text" class="layui-input" id="datetime" placeholder="yyyy-MM-dd HH:mm:ss">\n' +
+            '      </div></div>'
+          ,
+          title: '立即群发'
+          ,
+          btn: ['确认', '取消']
+          ,
+          btnAlign: 'c' //按钮居中
+          ,
+          shade: 0 //不显示遮罩
+          ,
+          yes: function () {
+            layer.closeAll();
+          }
+        });
+      });
+
+  });
+
+  layui.use('laydate', function() {
+    var laydate = layui.laydate;
+    //日期时间选择器
+    laydate.render({
+      elem: '#datetime'
+      ,type: 'datetime'
+    });
   });
 </script>
 </body>
