@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>微信管理</title>
+  <title>快捷短语</title>
   <link rel="stylesheet" href="../layui/css/layui.css">
   <script src="../layui/layui.js" charset="utf-8"></script>
 </head>
@@ -48,7 +48,7 @@
         ,
         skin: 'layui-layer-rim' //加上边框
         ,
-        content: '<div style="padding: 0px;margin: 0px"><div style="margin: 5px"><textarea id="demo" style="display: none"></textarea></div></div>'
+        content: '<div style="padding: 0px;margin: 0px"><textarea id="demo" style="display: none"></textarea></div>'
         ,
         title: '添加快捷语'
         ,
@@ -62,13 +62,14 @@
           layer.closeAll();
         }
       });
+
+      layui.use('layedit', function(){
+        var layedit = layui.layedit;
+        layedit.build('demo'); //建立编辑器
+      });
     });
   });
 
-  layui.use('layedit', function(){
-    var layedit = layui.layedit;
-    layedit.build('demo'); //建立编辑器
-  });
 </script>
 </body>
 </html>

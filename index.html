@@ -91,7 +91,7 @@
           <dl class="layui-nav-child">
             <dd><a lay-href="./src/serviceSystem/wechatManagement.html">微信管理</a></dd>
             <dd><a lay-href="./src/serviceSystem/fastReply.html">快捷回复</a></dd>
-            <dd><a lay-href="">客服管理</a></dd>
+            <dd><a lay-href="./src/serviceSystem/serviceManagement.html">客服管理</a></dd>
             <dd><a lay-href="">信息展示</a></dd>
           </dl>
         </li>
@@ -115,12 +115,26 @@
     var element = layui.element;
     var $ = jQuery = layui.$;
     var iframe = $('.layadmin-iframe')[0];
-  	$('body').on('click', '*[lay-href]', function(){
-    	var othis = $(this), href = othis.attr('lay-href');
-			iframe.src = href;
-  	});
+    reloadCurrent();
+
+    //点击左侧导航栏时，右侧加载对应页
+    $('body').on('click', '*[lay-href]', function(){
+      var othis = $(this), href = othis.attr('lay-href');
+      iframe.src = href;
+      sessionStorage.setItem('current', href);
+    });
+
+    //刷新时，加载当前页而不是默认页
+    function reloadCurrent(){
+      var currentUrl = sessionStorage.getItem('current') || './src/user/home.html';
+      iframe.src = currentUrl;
+      var aNode = $('a[lay-href="' + currentUrl +'"]');
+      //高亮
+      aNode.parent('dd').addClass('layui-this');
+      //展开
+      aNode.parents('li').addClass('layui-nav-itemed');
+    }
   });
-  
   
   
 </script>
