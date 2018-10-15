@@ -6,6 +6,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>加粉任务</title>
   <link rel="stylesheet" href="../layui/css/layui.css">
+  <link rel="stylesheet" href="../css/fans.css">
   <script src="../layui/layui.js" charset="utf-8"></script>
 </head>
 <body>
@@ -108,10 +109,42 @@
             <div class="layui-form-item">
               <div class="layui-inline">
                 <label class="layui-form-label" style="width: 150px"> 添加成功后打标签:</label>
-                <div class="layui-input-inline" style="width: 300px;">
-
+                <div class="layui-input-inline tag-body" style="width: 300px;">
+									<p class="add-tag-p">
+										<button id="add-tag-btn" class="layui-btn layui-btn-primary layui-btn-sm add-tag-btn">添加标签</button>
+										<i></i>
+									</p>
+									<div class="tag-div">
+										<p class="title">打标签</p>
+										<div>
+											<p>
+												<span><input type="checkbox" id="tag0"/><label for="tag0">附近人不可见</tabel></span>
+												<span><input type="checkbox" id="tag1"/><label for="tag1">自动</label></label>
+											</p>
+											<p><button class="layui-btn layui-btn-normal layui-btn-sm" id="addTag">新建标签</button></p>
+											<p class="add-tag-desc">
+												<input type="text" placeholder="请输入标签名" autocomplete="off"/>
+												<button class="layui-btn layui-btn-primary layui-btn-xs">添加</button>
+												<button class="layui-btn layui-btn-primary layui-btn-xs">取消</button>
+											</p>
+											<p class="tag-div-btn">
+												<button class="layui-btn layui-btn-sm">确认</button>
+												<button class="layui-btn layui-btn-primary layui-btn-sm">取消</button>
+											</p>
+										</div>
+									</div>
                 </div>
               </div>
+            </div>
+            
+            <div class="layui-form-item">
+            	<div class="layui-inline">
+                <label class="layui-form-label" style="width: 150px"></label>
+                <div class="layui-input-inline" style="width: 300px;">
+                  <button class="layui-btn">确认提交</button>
+                </div>
+              </div>
+            	
             </div>
 
           </div>
@@ -152,6 +185,21 @@
       type:'time'
     });
   });
+  
+  layui.use(['jquery'], function(){
+  	var $ = jQuery = layui.$;
+  	$('#add-tag-btn').click(function(){
+	    $('.tag-div').show();
+	  })
+    $('#addTag').click(function(){
+    	$('.add-tag-desc').show();
+    })
+    $('.tag-div-btn button').click(function(){
+    	$('.tag-div').hide();
+    	$('.add-tag-desc').hide();
+    })
+  })
+  
 </script>
 </body>
 </html>
