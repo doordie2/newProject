@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta http-equiv="Access-Control-Allow-Origin" content="*" />
   <title>用户登录</title>
   <link rel="stylesheet" href="./src/layui/css/layui.css">
   <link rel="icon" type="image/png" sizes="16x16" href="./src/img/icon.jpg">
@@ -50,7 +51,6 @@
 <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 <script src="./src/md5.js"></script>
 <script>
-
   $("body").keydown(function() {
     if (event.keyCode == "13") {
       $('.login-btn').click()
@@ -86,18 +86,16 @@
       },
       error: function (data) {
         layer.close(index);
-        $("#error").style.display="block"
-      },
+        },
       success: function (data) {
-        alert(JSON.stringify(data));
+        alert(data.msg)
         if (data.status == 200) {
-          layer.msg("登陆成功");
+          sessionStorage.setItem('token',data.msg);
           window.location.href = './index.html';
         } else {
-          $("#error").style.display="block"
-          layer.msg("网络异常，请重新登陆");
+          layer.msg("用户名或密码错误，请重新登陆");
         }
-      }
+      },
     });
   });
 </script>
