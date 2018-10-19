@@ -1,3 +1,46 @@
+.add-fans-shade{
+	display: none;
+	position: absolute;
+  padding: 10px;
+  background: #fff;
+  z-index: 99;
+  box-shadow: 1px 1px 1px #444;
+}
+.add-fans-shade button{
+	float: right;
+}
+.add-fans-shade .fans-list{
+	padding: 10px 15px 20px;
+	max-height: 300px;
+	overflow: hidden;
+	overflow-y: auto;
+}
+.add-fans-shade .fans-list li{
+	line-height: 30px;
+  /*border-bottom: 1px solid #d6d6d6;*/
+}
+.add-fans-shade .fans-list li i{
+	position: relative;
+	display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  margin-right: 5px; 
+	border: 1px solid #d6d6d6;
+}
+.add-fans-shade .fans-list li i.checked{
+	border-color: #5FB878;
+    background-color: #5FB878;
+    color: #fff;
+}
+.add-fans-shade .fans-list li i.checked:before{
+	position: absolute;
+  bottom: -9px;
+  right: 5px;
+  content: '√';
+  font-size: 15px;
+}
+
 
 .tag-body .add-tag-p .add-tag-btn{
   border-radius: 30px;

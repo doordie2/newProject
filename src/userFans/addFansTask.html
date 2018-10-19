@@ -19,9 +19,18 @@
                     style="margin-top: 20px;">
             <legend>加粉任务</legend>
           </fieldset>
+          
         </div>
+        
         <div class="layui-card-body">
-          <button class="layui-btn layui-btn-primary">添加加粉账号</button>
+	        <button class="layui-btn layui-btn-primary" id="add-fans">添加加粉账号</button>
+	        <div class="add-fans-shade">
+	         	<ul class="fans-list"></ul>
+	          <button class="layui-btn layui-btn-sm add-fans-btn">确认</button>
+	        </div>
+        </div>
+        
+        <div class="layui-card-body">
           <fieldset class="layui-elem-field layui-field-title"
                     style="margin-top: 20px;">
             <legend>批量添加微信号</legend>
@@ -114,22 +123,22 @@
 										<button id="add-tag-btn" class="layui-btn layui-btn-primary layui-btn-sm add-tag-btn">添加标签</button>
 										<i></i>
 									</p>
-									<div class="tag-div">
+									<div class="tag-div layui-form">
 										<p class="title">打标签</p>
 										<div>
 											<p>
-												<span><input type="checkbox" id="tag0"/><label for="tag0">附近人不可见</tabel></span>
-												<span><input type="checkbox" id="tag1"/><label for="tag1">自动</label></label>
+												<input type="checkbox" lay-skin="primary" name="tag0" checked value="0" title="附近人不可见"/>
+												<input type="checkbox" lay-skin="primary" name="tag1" value="1" title="自动"/>
 											</p>
 											<p><button class="layui-btn layui-btn-normal layui-btn-sm" id="addTag">新建标签</button></p>
 											<p class="add-tag-desc">
-												<input type="text" placeholder="请输入标签名" autocomplete="off"/>
+												<input type="text" placeholder="请输入标签名" autocomplete="off" name="tagName"/>
 												<button class="layui-btn layui-btn-primary layui-btn-xs">添加</button>
 												<button class="layui-btn layui-btn-primary layui-btn-xs">取消</button>
 											</p>
 											<p class="tag-div-btn">
-												<button class="layui-btn layui-btn-sm">确认</button>
-												<button class="layui-btn layui-btn-primary layui-btn-sm">取消</button>
+												<button class="layui-btn layui-btn-sm" lay-submit lay-filter="add-tag-sure">确认</button>
+												<button class="layui-btn layui-btn-primary layui-btn-sm" lay-submit lay-filter="add-tag-cancel">取消</button>
 											</p>
 										</div>
 									</div>
@@ -169,9 +178,8 @@
         }
       });
   });
-  layui.use(['form', 'layedit', 'laydate'], function(){
-    var form = layui.form
-      ,layer = layui.layer
+  layui.use(['layedit', 'laydate'], function(){
+    var layer = layui.layer
       ,layedit = layui.layedit
       ,laydate = layui.laydate;
 
@@ -186,8 +194,37 @@
     });
   });
   
-  layui.use(['jquery'], function(){
-  	var $ = jQuery = layui.$;
+  layui.use(['form', 'jquery'], function(){
+  	var form = layui.form, $ = jQuery = layui.$;
+
+  	//添加加粉账号的相关操作
+  	var fansId;
+  	var addFansShade = $('.add-fans-shade'), fansList = $('.fans-list');
+  	$('#add-fans').click(function(){
+  		fansId = '';
+  		var nodes = '';
+  		fansList.children().remove();
+  		for(var i=1;i<=5;i++){
+				nodes += '<li><i></i><span data-id="' + i + '">' + 1234577 + '</span></li>';
+	  	}
+	  	fansList.prepend(nodes);
+  		addFansShade.show();
+  		
+  		$('.fans-list i').click(function(){
+  			$('.fans-list i').removeClass('checked');
+	  		fansId = this.nextSibling.dataset.id;
+	  		this.className = 'checked';
+	  	})
+  	})
+  	$('.add-fans-btn').click(function(){
+  		console.log(fansId);
+  		addFansShade.hide();
+  	})
+
+  	
+  	
+  	
+  	//添加标签的相关操作
   	$('#add-tag-btn').click(function(){
 	    $('.tag-div').show();
 	  })
@@ -198,6 +235,11 @@
     	$('.tag-div').hide();
     	$('.add-tag-desc').hide();
     })
+// 	 获取添加标签的内容
+    form.on('submit(add-tag-sure)', function(data){
+    	console.log(data.field)
+    })
+    
   })
   
 </script>
